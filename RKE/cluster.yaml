@@ -1,0 +1,68 @@
+
+ssh_key_path: /Users/haripalepu/Desktop/K8S/Kubernetes-Installation/RKE/Terraform/k8s.pem
+cluster_name: k8scluster
+kubernetes_version: v1.22.12-rancher1-1
+nodes:
+  - address: 3.236.191.47 #Master-01-Public IP
+    hostname_override: master01
+    #internal_address: 172.16.22.12
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+  - address: 3.94.53.237
+    hostname_override: master02
+    #internal_address: 172.16.32.37 
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+  - address: 3.88.166.207
+    hostname_override: master03
+    #internal_address: 172.16.42.73
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+  - address: 3.236.152.67
+    hostname_override: worker01
+    #internal_address: 172.16.42.73
+    user: ubuntu
+    role: [worker]
+  - address: 44.204.229.174
+    hostname_override: worker02
+    #internal_address: 172.16.42.73
+    user: ubuntu
+    role: [worker]
+  - address: 54.91.109.49
+    hostname_override: worker03
+    #internal_address: 172.16.42.73
+    user: ubuntu
+    role: [worker]
+
+authentication:
+    strategy: x509
+    sans:
+      - "RKE-NLB-3e90181a2ebea866.elb.us-east-1.amazonaws.com" #NLB-DNS
+      - "rke.haripalepu.site"  
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
+
+network:
+  plugin: flannel
+  options:
+    flannel_iface: eth0
+    flannel_backend_type: vxlan
+    flannel_autoscaler_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    flannel_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    
+    
+    
+    
+    
+    
+    

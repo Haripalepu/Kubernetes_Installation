@@ -13,7 +13,7 @@ kops delete cluster --name=<CLUSTER_NAME> --state=<S3_BUCKET_NAME> --yes
 
 Example:
 Create the cluster with 1-Control plane and 3-Worker nodes:
-kops create cluster --name=kops-cluster --state=s3://<bucknet name> \
+kops create cluster --name=<FQDN> --state=s3://<bucknet name> \
 --zones=us-east-1a,us-east-1b,us-east-1c --node-count=3 --control-plane-count=1 \
 --node-size=t3.medium --control-plane-size=t3.medium --control-plane-zones=us-east-1a \
 --node-volume-size 10 --control-plane-volume-size 10 --ssh-public-key ~/.ssh/id_ed25519.pub \
@@ -22,3 +22,11 @@ kops create cluster --name=kops-cluster --state=s3://<bucknet name> \
 
 Delete the cluster or S3 files:
 kops delete cluster --name=kops-cluster --state=s3://<bucket name> --yes
+
+
+######delete this command before pushing the code#############################################
+kops create cluster --name=mohansai.online --state=s3://k8s-2025 \
+--zones=us-east-1a,us-east-1b,us-east-1c --node-count=3 --control-plane-count=1 \
+--node-size=t3.medium --control-plane-size=t3.medium --control-plane-zones=us-east-1a \
+--node-volume-size 10 --control-plane-volume-size 10 --ssh-public-key ~/.ssh/id_ed25519.pub \
+--dns-zone=mohansai.online --networking calico --yes
