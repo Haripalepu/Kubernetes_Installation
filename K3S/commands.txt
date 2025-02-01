@@ -1,0 +1,13 @@
+#Master-01
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--tls-san k3s.haripalepu.site --tls-san master.haripalepu.site --write-kubeconfig=/root/.kube/config  --write-kubeconfig-mode=644" K3S_TOKEN=SECRET sh -s - server --cluster-init
+
+#Master-02 & 03
+Make sure you replace the IP with your master private IP ....
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--tls-san k3s.haripalepu.site --tls-san master.haripalepu.site --write-kubeconfig=/root/.kube/config  --write-kubeconfig-mode=644" K3S_TOKEN=SECRET sh -s - server --server https://10.1.1.177:6443
+
+#Run this in any master node to get the token to add workernodes
+cat /var/lib/rancher/k3s/server/token
+
+#Worker nodes
+#Replace the token
+curl -sfL https://get.k3s.io | K3S_URL=https://172.19.1.119:6443 K3S_TOKEN=K10ea44ec1615bb2ef79cb8ec8b5ec7ff0ced5d98e910dd62f29a3e4986c73e77c9::server:6e5de3d07037569f66a0bf062dfe97bd sh -
