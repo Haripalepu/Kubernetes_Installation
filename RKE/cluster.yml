@@ -1,7 +1,7 @@
 
 ssh_key_path: /Users/haripalepu/Desktop/K8S/Kubernetes-Installation/RKE/Terraform/k8s.pem
 cluster_name: k8scluster
-kubernetes_version: v1.22.12-rancher1-1
+kubernetes_version: v1.30.8-rancher1-1
 nodes:
   - address: 3.236.191.47 #Master-01-Public IP
     hostname_override: master01
