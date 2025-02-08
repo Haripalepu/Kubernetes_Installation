@@ -1,36 +1,36 @@
 #If running the yml file in mac
 #ssh_key_path: /Users/haripalepu/Desktop/K8S/Kubernetes-Installation/RKE/Terraform/k8s.pem
 #If linux
-ssh_key_path: /home/ubuntu/Kubernetes_Installation/RKE/k8s.pem
+ssh_key_path: /root/Kubernetes_Installation/RKE/k8s.pem
 cluster_name: k8scluster
-kubernetes_version: v1.22.10-rancher1-1
+kubernetes_version: v1.22.5-rancher1-1
 nodes:
-  - address: 44.215.102.21 #Master-01-Public IP
+  - address: 3.238.54.56 #Master-01-Public IP
     hostname_override: master01
     #internal_address: 172.16.22.12
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 54.237.129.98
+  - address: 52.71.71.251
     hostname_override: master02
     #internal_address: 172.16.32.37 
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 54.167.75.62
+  - address: 54.90.164.245
     hostname_override: master03
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 3.216.31.114
+  - address: 44.192.89.221
     hostname_override: worker01
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [worker]
-  - address: 3.82.114.134
+  - address: 44.212.45.242
     hostname_override: worker02
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [worker]
-  - address: 54.221.62.7
+  - address: 52.91.219.179
     hostname_override: worker03
     #internal_address: 172.16.42.73
     user: ubuntu
