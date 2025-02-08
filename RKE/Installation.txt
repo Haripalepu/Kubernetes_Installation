@@ -29,6 +29,10 @@ On the management server, change to the `/usr/local/bin` directory and download 
   ```bash
   cd /usr/local/bin
   ```
+## Download kubectl Binary
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+chmod 777 kubectl
 
 - Download the RKE binary:
 
@@ -73,8 +77,15 @@ Clone the repository containing your `cluster.yml` file to the management server
 
 ### 8. Run `rke up`
 
-Once the `cluster.yml` file is updated, run the `rke up` command from the same location to deploy the RKE cluster. After a successful setup, the `kube_config_cluster.yml` file will be generated, which will allow you to interact with the Kubernetes cluster using `kubectl`.
+Once the `cluster.yml` file is updated, run the `rke up --ignore-docker-version --config cluster.yml
+` command from the same location to deploy the RKE cluster. After a successful setup, the `kube_config_cluster.yml` file will be generated, which will allow you to interact with the Kubernetes cluster using `kubectl`.
 
 ---
 
 Once the cluster is up and running, use the generated `kube_config_cluster.yml` file to access the cluster and perform management tasks.
+
+
+replace the ip address with rke.haripalepu.site to do load balancing server: "https://54.84.117.38:6443"
+
+export KUBECONFIG=/home/ubuntu/Kubernetes_Installation/RKE/kube_config_cluster.yml
+echo $KUBECONFIG
