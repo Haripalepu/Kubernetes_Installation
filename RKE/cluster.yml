@@ -5,32 +5,32 @@ ssh_key_path: /home/ubuntu/Kubernetes_Installation/RKE/k8s.pem
 cluster_name: k8scluster
 kubernetes_version: v1.22.10-rancher1-1
 nodes:
-  - address: 44.192.89.202 #Master-01-Public IP
+  - address: 44.215.102.21 #Master-01-Public IP
     hostname_override: master01
     #internal_address: 172.16.22.12
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 54.211.130.8
+  - address: 54.237.129.98
     hostname_override: master02
     #internal_address: 172.16.32.37 
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 54.84.117.38
+  - address: 54.167.75.62
     hostname_override: master03
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [controlplane, worker, etcd]
-  - address: 44.205.6.195
+  - address: 3.216.31.114
     hostname_override: worker01
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [worker]
-  - address: 3.82.188.250
+  - address: 3.82.114.134
     hostname_override: worker02
     #internal_address: 172.16.42.73
     user: ubuntu
     role: [worker]
-  - address: 98.81.148.167
+  - address: 54.221.62.7
     hostname_override: worker03
     #internal_address: 172.16.42.73
     user: ubuntu
@@ -39,7 +39,7 @@ nodes:
 authentication:
     strategy: x509
     sans:
-      - "rke-nlb-937c4dc56accea13.elb.us-east-1.amazonaws.com" #NLB-DNS
+      - "rke-nlb-1e54ed87ab511d9f.elb.us-east-1.amazonaws.com" #NLB-DNS
       - "rke.haripalepu.site"  #DNS record
 services:
   etcd:
