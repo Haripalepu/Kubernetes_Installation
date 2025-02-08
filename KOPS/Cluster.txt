@@ -1,0 +1,42 @@
+# Create the cluster with 1 Control plane and 3 Worker nodes:
+kops create cluster --name=<CLUSTER_NAME> --state=<S3_BUCKET_NAME> \
+  --zones=<AWS_REGION>a,<AWS_REGION>b,<AWS_REGION>c \
+  --node-count=3 --control-plane-count=1 \
+  --node-size=t3.medium --control-plane-size=t3.medium \
+  --control-plane-zones=<AWS_REGION>a \
+  --node-volume-size=10 --control-plane-volume-size=10 \
+  --ssh-public-key=<SSH_PUBLIC_KEY_PATH> \
+  --dns-zone=<DNS_ZONE> --networking calico --yes
+
+# To delete the cluster or S3 files:
+kops delete cluster --name=<CLUSTER_NAME> --state=<S3_BUCKET_NAME> --yes
+
+
+# If you want to store the configuration in a file (e.g., cluster.yaml) for further edits:
+# You can modify configurations such as IP or Kubernetes version directly in this file.
+
+kops create cluster --name=<CLUSTER_NAME> --state=<S3_BUCKET_NAME> \
+  --zones=<AWS_REGION>a,<AWS_REGION>b,<AWS_REGION>c \
+  --node-count=3 --control-plane-count=1 \
+  --node-size=t3.medium --control-plane-size=t3.medium \
+  --control-plane-zones=<AWS_REGION>a \
+  --node-volume-size=10 --control-plane-volume-size=10 \
+  --ssh-public-key=<SSH_PUBLIC_KEY_PATH> \
+  --dns-zone=<DNS_ZONE> --networking calico --yes \
+  --dry-run --output yaml > cluster.yaml
+
+kops apply -f cluster.yaml
+
+
+
+# Example usage:
+# Create the cluster with 1 Control plane and 3 Worker nodes:
+kops create cluster --name=haripalepu.site --state=s3://k8s-2025 \
+  --zones=us-east-1a,us-east-1b,us-east-1c --node-count=3 \
+  --control-plane-count=1 --node-size=t3.medium --control-plane-size=t3.medium \
+  --control-plane-zones=us-east-1a --node-volume-size=10 --control-plane-volume-size=10 \
+  --ssh-public-key=~/.ssh/id_rsa.pub --dns-zone=haripalepu.site \
+  --networking calico --yes
+
+# Delete the cluster or S3 files:
+kops delete cluster --name=haripalepu.site --state=s3://k8s-2025 --yes

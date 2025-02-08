@@ -1,0 +1,33 @@
+# Set your desired cluster name (Fully Qualified Domain Name)
+export CLUSTER_NAME=<CLUSTER_NAME-FQDN>  # Example: haripalepu.site
+
+# Set your desired AWS region
+export AWS_REGION=<AWS_REGION>  # Example: us-east-1
+
+# Set the desired name (can be the same as CLUSTER_NAME)
+export NAME=<NAME>  # Example: haripalepu.site
+
+# Set the S3 bucket for Kops state storage
+export KOPS_STATE_STORE=<KOPS_STATE_STORE>  # Example: s3://k8s-2025
+
+# Set your preferred text editor for Kube configuration
+export KUBE_EDITOR=<KUBE_EDITOR>  # Example: nano
+
+
+# Example with values:
+export CLUSTER_NAME=haripalepu.site 
+export AWS_REGION=us-east-1
+export NAME=haripalepu.site  
+export KOPS_STATE_STORE=s3://k8s-2025
+export KUBE_EDITOR=nano
+
+
+# If you're configuring these in a management server either copy paste the above env or follow below:
+nano ~/.bashrc
+cntr+v
+# Paste the above environment variable setup at the end of the file
+# Save and exit: press Ctrl+O, then x, then Enter
+
+# Apply the changes to the current session
+source ~/.bashrc
+
