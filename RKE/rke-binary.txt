@@ -1,1 +1,4 @@
 https://github.com/rancher/rke/releases/tag/v1.5.8
+
+rke binary linux amd64 
+wget https://github.com/rancher/rke/releases/download/v1.5.8/rke_linux-amd64
