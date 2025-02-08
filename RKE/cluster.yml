@@ -3,7 +3,7 @@
 #If linux
 ssh_key_path: /home/ubuntu/Kubernetes_Installation/RKE/k8s.pem
 cluster_name: k8scluster
-kubernetes_version: v1.30.8-rancher1-1
+kubernetes_version: v1.24.10-rancher1-1
 nodes:
   - address: 44.192.89.202 #Master-01-Public IP
     hostname_override: master01
